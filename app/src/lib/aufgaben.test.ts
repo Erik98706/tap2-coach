@@ -65,7 +65,7 @@ describe("Fehlerprotokoll (logCause der Live-App)", () => {
 describe("Fehler melden", () => {
   it("vorausgefülltes Issue mit Aufgaben-ID und Titel", () => {
     const u = UEB[0], url = new URL(reportUrlUeb(u)), p = url.searchParams;
-    expect(url.pathname).toBe("/BerkayMAK18/tap2-coach/issues/new");
+    expect(url.pathname).toBe("/Erik98706/tap2-coach/issues/new");
     expect(p.get("title")).toContain("Fehler in Aufgabe " + u.id + ": ");
     expect(p.get("labels")).toBe("fehler");
     expect(p.get("body")).toContain("**Aufgabe:** `" + u.id + "` – " + u.titel);

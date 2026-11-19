@@ -3,7 +3,7 @@
  * Release-Texte sind Fremddaten: kein HTML, sondern eine kleine Struktur (Überschrift, Absatz, Listen, fett, kursiv),
  * aus der die Ansicht dasselbe DOM wie die Live-App aufbaut – alles als escapter React-Text.
  */
-export const REPO = "BerkayMAK18/tap2-coach";
+export const REPO = "Erik98706/tap2-coach";
 export const KEY_PN = "tap2coach-patch";
 export type Release = { tag: string; name: string; url: string; date: string; body: string };
 export type PnCache = { at: number; list: Release[] };

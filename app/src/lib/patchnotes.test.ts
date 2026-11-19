@@ -12,7 +12,7 @@ describe("Patch Notes", () => {
     ]);
     expect(l).toEqual([
       { tag: "v1.2.0", name: "Neue Suche", url: "https://github.com/x/y/releases/tag/v1.2.0", date: "2026-11-01", body: "- Suche" },
-      { tag: "v1.1.0", name: "v1.1.0", url: "https://github.com/BerkayMAK18/tap2-coach/releases", date: "2026-10-05", body: "Text" },
+      { tag: "v1.1.0", name: "v1.1.0", url: "https://github.com/Erik98706/tap2-coach/releases", date: "2026-10-05", body: "Text" },
     ]);
     expect(() => pnFromApi({ message: "rate limit" })).toThrow();
   });
@@ -24,7 +24,7 @@ describe("Patch Notes", () => {
     expect(pnParseCache(null)).toBeNull();
     expect(pnParseCache("kaputt")).toBeNull();
     const c = pnParseCache(JSON.stringify({ at: 5, list: [{ tag: "v1", name: "n", url: "http://evil", date: "<b>", body: 3 }, null] }))!;
-    expect(c).toEqual({ at: 5, list: [{ tag: "v1", name: "n", url: "https://github.com/BerkayMAK18/tap2-coach/releases", date: "", body: "3" }] });
+    expect(c).toEqual({ at: 5, list: [{ tag: "v1", name: "n", url: "https://github.com/Erik98706/tap2-coach/releases", date: "", body: "3" }] });
   });
   it("Datum auf Deutsch", () => {
     expect(pnFmt("2026-11-01")).toBe("1. November 2026");

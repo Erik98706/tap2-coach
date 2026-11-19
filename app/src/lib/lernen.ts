@@ -95,7 +95,7 @@ export const startTab = (S: State, tid: string, area: LearningArea = "fiae") => 
 export const dueCount = (S: State, qs: Question[]) => qs.filter((q) => isDue(S, q.id)).length;
 
 // ---------- Fehler melden (vorausgefülltes GitHub-Issue, wie reportUrl() in der Live-App)
-const REPO = "BerkayMAK18/tap2-coach";
+const REPO = "Erik98706/tap2-coach";
 export const clip = (x: unknown, n: number) => { const s = String(x || "").trim(); return s.length > n ? s.slice(0, n) + " …" : s; };
 export const quote = (x: string) => clip(x, 1200).split("\n").map((l) => "> " + l).join("\n");
 export function issueUrl(title: string, lines: string[]) {
