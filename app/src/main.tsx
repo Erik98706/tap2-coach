@@ -11,7 +11,8 @@ import "./styles.css";
 // Darstellung wie in der Live-App: gespeicherte Wahl (hell/dunkel) setzen, sonst Systemeinstellung (Automatisch)
 try { const t = localStorage.getItem("tap2coach-theme"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch { /* privat */ }
 
-const router = createRouter({ routeTree, defaultPreload: "intent", scrollRestoration: true });
+const basepath = import.meta.env.BASE_URL.replace(/\/$/, "") || "/";
+const router = createRouter({ routeTree, basepath, defaultPreload: "intent", scrollRestoration: true });
 
 declare module "@tanstack/react-router" {
   interface Register { router: typeof router }

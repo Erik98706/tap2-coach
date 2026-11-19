@@ -143,7 +143,7 @@ function Themenwahl({ way }: { way: WayProps }) {
     <div className="tp-pick">
       <section className="card tp-hero">
         <div className="row" style={{ gap: 10, flexWrap: "wrap" }}>
-          <img className="vx-mark" src="/icons/vortex.svg" alt="" />
+          <img className="vx-mark" src={`${import.meta.env.BASE_URL}icons/vortex.svg`} alt="" />
           <div style={{ flex: 1, minWidth: 220 }}><h2 style={{ margin: 0 }}>{pro && inApp ? "Tutor Pro" : "Tutor"}</h2><p className="small muted" style={{ margin: "4px 0 0" }}>{inApp
             ? <>Wähle ein Thema – der Chat öffnet sich. Sobald du deine erste Nachricht schreibst, löchert dich der Tutor eine ganze Sitzung lang mit Aufgaben im IHK-Stil und bewertet wie ein Prüfer mit Teilpunkten.{pro ? "" : " Kostenlos, mit einem einfacheren Modell als Tutor Pro."} Prüfung am {examLabel}.</>
             : <>Dein Prüfungstutor für die TAP2 – mit deiner eigenen KI, kostenlos. Wähle ein Thema: Der Tutor stellt dir eine ganze Sitzung lang Aufgaben im IHK-Stil, bewertet wie ein Prüfer mit Teilpunkten, und dein Graph lernt mit. Prüfung am {examLabel}.</>}</p></div>

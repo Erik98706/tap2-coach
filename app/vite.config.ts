@@ -6,7 +6,7 @@
  * - Design = Stylesheet der Live-App (src/styles.css → theme/main.css), kein CSS-Framework.
  * - vite-plugin-pwa mit eigenem Service Worker (src/sw.ts): Seiten Netz zuerst (immer aktuell), Programmdateien
  *   aus dem Vorab-Cache, offline nutzbar – wie sw.js der Live-App.
- * Hosting: beliebiges statisches CDN, z. B. Cloudflare Pages Free (siehe docs/ENTWICKLUNG.md).
+ * Hosting: GitHub Pages über ../.github/workflows/pages-vortex.yml; für lokale Vorschau gilt der Root-Pfad.
  */
 import path from "node:path";
 import { defineConfig } from "vitest/config";
@@ -14,7 +14,10 @@ import react from "@vitejs/plugin-react";
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import { VitePWA } from "vite-plugin-pwa";
 
+const base = process.env.VITE_BASE_PATH || "/";
+
 export default defineConfig({
+  base,
   resolve: { alias: { "@": path.resolve(import.meta.dirname, "./src") } },
   server: { port: 8080 },
   plugins: [
@@ -31,11 +34,12 @@ export default defineConfig({
         short_name: "Vortex",
         description: "Lern-App für die Abschlussprüfung Teil 2 – Fachinformatik Anwendungsentwicklung",
         lang: "de",
-        start_url: "/",
+        start_url: base,
+        scope: base,
         display: "standalone",
         background_color: "#f6f7f9",
         theme_color: "#172033",
-        icons: [{ src: "icon-192.png", sizes: "192x192", type: "image/png" }, { src: "icon-512.png", sizes: "512x512", type: "image/png" }], // Vortex-Logo (public/icons/vortex.svg)
+        icons: [{ src: `${base}icon-192.png`, sizes: "192x192", type: "image/png" }, { src: `${base}icon-512.png`, sizes: "512x512", type: "image/png" }], // Vortex-Logo (public/icons/vortex.svg)
       },
       injectManifest: {
         globPatterns: ["**/*.{js,css,woff2,png,svg,json,wasm}"], // ohne HTML: Seiten kommen immer zuerst aus dem Netz

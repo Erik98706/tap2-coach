@@ -14,7 +14,7 @@ Tests, typsicherer Code. Später optional: KI-Tutor, Katalog-Bibliothek, Konten.
 | --- | --- | --- |
 | Branch | `main` | `dev` |
 | Code | `index.html` (Single-File-PWA) | `app/` |
-| Hosting | GitHub Pages | statisches CDN, z. B. Cloudflare Pages Free (eigene Adresse) |
+| Hosting | GitHub Pages im eigenen Fork | öffentliche Projektseite unter `/<Repository>/`; lokaler Speicher ist von der Live-Adresse getrennt |
 | Daten | `localStorage` der Live-Adresse | `localStorage` der neuen Adresse (getrennt) |
 
 Eigene Adresse statt Unterordner auf github.io: gleiche Origin hieße gemeinsamer Speicher und Service Worker.
@@ -31,7 +31,7 @@ Die neue App liest die Live-Inhalte nur über das Export-Skript, sie schreibt ni
 | Inhalte | JSON-Kataloge (`src/content/generated`), Schema mit Zod (`src/content/schema.ts`) | Inhalte getrennt vom Code, Grundlage der Katalog-Bibliothek |
 | Offline | vite-plugin-pwa (Workbox, Precache) | wie die Live-App nach dem ersten Besuch offline nutzbar |
 | Tests | Vitest | Engine, Datenmodell, Kataloge |
-| Hosting | statisch (Cloudflare Pages Free: unbegrenzter Traffic) | kein Server, keine laufenden Kosten, weltweit schnell |
+| Hosting | statisch über GitHub Pages | kein eigener Server; Deploy läuft über GitHub Actions |
 | Sync/Rangliste | später: Supabase Free, dasselbe verschlüsselte Protokoll wie die Live-App | optional, Lernen geht immer ohne |
 
 **Warum nicht mehr TanStack Start + Cloudflare Workers (Phase 0)?** Der Server war für den KI-Tutor da (Login,
@@ -44,7 +44,7 @@ und kommt in Phase 3 als **eigenes Modul** zurück (eigener Worker mit Freigabel
 ```
 app/
 ├─ index.html                     Einstieg (Vite)
-├─ public/_headers                Sicherheits-Header + CSP für Cloudflare Pages
+├─ public/_headers                Sicherheits-Header + CSP für Hosts, die _headers unterstützen (nicht GitHub Pages)
 ├─ scripts/export-legacy-catalog.mjs   ../index.html → src/content/generated/*.json (nur lesen)
 ├─ src/
 │  ├─ main.tsx                    Router starten

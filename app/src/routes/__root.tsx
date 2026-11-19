@@ -86,7 +86,7 @@ function Shell() {
   return (
     <div className="app" onClick={go}>
       <nav className="side" aria-label="Hauptnavigation">
-        <div className="brand"><img className="brand-mark" src="/icons/vortex.svg" alt="" /><div className="brand-t">Vortex</div></div>
+        <div className="brand"><img className="brand-mark" src={`${import.meta.env.BASE_URL}icons/vortex.svg`} alt="" /><div className="brand-t">Vortex</div></div>
         {NAV_MAIN.filter((n) => area === "fiae" || n.view !== "events").map((n) => <NavBtn key={n.view} n={n} current={navView === n.view} />)}
         {/* Tutor vorerst nur für das freigeschaltete Konto (Claude) – für alle anderen unsichtbar */}
         {tutorOn && area === "fiae" && <NavBtn n={TUTOR_NAV} current={navView === "tutor"} />}

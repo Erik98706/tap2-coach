@@ -22,7 +22,7 @@ function Datenschutz() {
         <Ul>
           <li>Du kannst ohne Konto lernen. Dein Lernstand bleibt dann ausschließlich in deinem Browser.</li>
           <li>Kein Tracking, keine Werbung, keine Analyse-Werkzeuge, keine Cookies zu Werbezwecken.</li>
-          <li>Schriften und Programmbibliotheken liegen auf unserem eigenen Server. Es gibt keine Verbindung zu Google oder anderen Drittanbietern.</li>
+          <li>Schriften und Programmbibliotheken werden von derselben Website geladen. Es gibt keine Verbindung zu Google.</li>
           {f.sync && <li>Mit Konto liegt dein Lernstand in deinem Konto – geschützt durch die Anmeldung, aber nicht Ende-zu-Ende-verschlüsselt. Ohne Konto kannst du deine Geräte per Code koppeln; dann wird er vorher in deinem Browser verschlüsselt und niemand außer dir kann ihn lesen.</li>}
           {f.leaderboard && <li>In der Rangliste erscheinst du nur, wenn du das möchtest, und nur mit einem selbst gewählten Benutzernamen.</li>}
         </Ul>
@@ -34,11 +34,11 @@ function Datenschutz() {
       </Sec>
 
       <Sec t="Aufruf der App (Hosting)">
-        <p>Die App wird über Cloudflare Pages (Cloudflare, Inc.) ausgeliefert. Beim Aufruf verarbeitet Cloudflare technisch notwendige Daten: IP-Adresse, Zeitpunkt, aufgerufene Datei, Browser-Kennung. Das dient der Auslieferung und dem Schutz vor Angriffen.</p>
+        <p>Die App wird über GitHub Pages (GitHub, Inc.) ausgeliefert. Beim Aufruf verarbeitet GitHub technisch notwendige Zugriffsdaten, etwa IP-Adresse, Zeitpunkt, aufgerufene Datei und Browser-Kennung, nach den für GitHub Pages geltenden Bedingungen. Das dient der Auslieferung und dem Schutz des Dienstes.</p>
         <Ul>
           <li>Rechtsgrundlage: berechtigtes Interesse an einem sicheren, funktionierenden Angebot (Art. 6 Abs. 1 lit. f DSGVO).</li>
-          <li>Cloudflare handelt als Auftragsverarbeiter. Eine Übermittlung in die USA ist möglich; Cloudflare ist nach dem EU-US Data Privacy Framework zertifiziert (Art. 45 DSGVO).</li>
-          <li>Wir selbst werten diese Daten nicht aus und führen keine eigenen Zugriffsprotokolle.</li>
+          <li>Weitere Informationen zur Verarbeitung durch GitHub findest du in der <a href="https://docs.github.com/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noreferrer">Datenschutzerklärung von GitHub</a>.</li>
+          <li>Wir erhalten keine individuellen Serverzugriffsprotokolle von GitHub Pages.</li>
         </Ul>
       </Sec>
 

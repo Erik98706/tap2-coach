@@ -25,22 +25,20 @@ npm run catalog:export
 Liest `../index.html` (nur lesen) und schreibt `src/content/generated/`. Danach `npm test` – der Katalog-Test
 prüft Format und Frage-IDs. `npm run build` bricht ab, wenn die Kataloge nicht mehr zur `index.html` passen.
 
-## Deploy auf Cloudflare Pages (Free)
+## Deploy auf GitHub Pages (Fork)
 
-Einmalig im Cloudflare-Dashboard → Workers & Pages → Create → Pages → mit GitHub verbinden:
+Im eigenen Fork unter **Settings → Pages** als Build-/Deploy-Quelle **GitHub Actions** wählen. Der Workflow
+`../../.github/workflows/pages-vortex.yml` baut `app/` bei jedem Push auf `SI-Anbindung` und veröffentlicht `app/dist/`.
+Die Projektadresse lautet `https://<GitHub-Benutzername>.github.io/tap2-coach/`. Der Workflow setzt den Unterpfad,
+die SPA-404-Seite und den PWA-Scope bereits passend. Ohne Supabase-Secrets bleibt die App lokal-first.
 
-| Einstellung | Wert |
-| --- | --- |
-| Repository | `BerkayMAK18/tap2-coach` |
-| Production branch | `dev` |
-| Root directory | `app` |
-| Build command | `npm run build` |
-| Build output directory | `dist` |
-| Umgebungsvariable | `NODE_VERSION` = `22` |
+GitHub Pages übernimmt keine Regeln aus `public/_headers`; dort definierte Sicherheits-Header gelten nur auf Hosts,
+die diese Datei unterstützen (etwa Cloudflare Pages). Direkte App-Routen werden über `404.html` wieder in die SPA geleitet.
 
-- Cloudflare baut danach bei jedem Push auf `dev` automatisch. Die Live-App (GitHub Pages, `main`) bleibt unberührt.
-- `public/_headers` setzt Sicherheits-Header und CSP. Seiten ohne Datei liefert Pages automatisch als `index.html` aus (SPA).
-- Kosten: Free-Plan, unbegrenzter statischer Traffic, 500 Builds/Monat.
+## Alternative: Cloudflare Pages
+
+Für ein separates Cloudflare-Hosting: Root directory `app`, Build command `npm run build`, Output-Verzeichnis `dist`
+und `NODE_VERSION=22`. Bei einem Deploy unter einer eigenen Domain ist kein Projekt-Unterpfad nötig.
 
 ## Sicherheit
 
@@ -50,7 +48,7 @@ Was der Code absichert:
 | --- | --- |
 | Lernstand-Format wie Live-App; Fremddaten (Sicherung) werden auf Typen geprüft, echte Daten bleiben unverändert | `src/lib/state.ts` (+ Test) |
 | Vor dem Laden einer Sicherung wird der alte Stand zurückgelegt (`tap2coach-vor-import`) | `src/store/progress.ts` |
-| Keine Inline-Skripte; CSP erlaubt nur eigene Skripte, WebAssembly, Supabase und GitHub-API | `public/_headers` |
+| Keine Inline-Skripte; CSP erlaubt nur eigene Skripte, WebAssembly, Supabase und GitHub-API (Header nur auf unterstützten Hosts aktiv) | `public/_headers` |
 | Texte werden von React escaped; HTML nur für Abbildungen aus dem eigenen Katalog | `src/routes/lernen.runde.tsx` |
 | Kataloge werden gegen ein Schema geprüft, bevor sie in die App kommen | `src/content/catalog.test.ts` |
 

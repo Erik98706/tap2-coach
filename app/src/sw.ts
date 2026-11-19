@@ -15,7 +15,7 @@ const sw = self as unknown as { skipWaiting(): Promise<void>; addEventListener(t
 // @ts-expect-error – wird beim Build durch die Dateiliste ersetzt (muss wörtlich so heißen)
 const MANIFEST: Entry[] = self.__WB_MANIFEST;
 
-const PAGES = "tap2-pages", SHELL = "/index.html";
+const PAGES = "tap2-pages", SHELL = new URL(`${import.meta.env.BASE_URL}index.html`, self.location.origin).href;
 
 // Zuerst die Navigation (eigener Handler, damit die Seite nie aus dem Vorab-Cache kommt)
 sw.addEventListener("fetch", (e: FetchEv) => {

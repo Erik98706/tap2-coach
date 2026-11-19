@@ -45,12 +45,12 @@ export const BRIDGE_XP_TASKS_PER_DAY = 8;
  * Kontakt bewusst über das GitHub-Profil (keine Firmenadresse). Kommt später eine eigene E-Mail dazu, hier ergänzen.
  */
 export const CONTROLLER = {
-  name: "Berkay Akdemir",
-  contact: "über GitHub: github.com/BerkayMAK18",
+  name: "Erik Numsen",
+  contact: "über GitHub: github.com/Erik98706",
 } as const;
 
 /** Stand des Datenschutzhinweises – bei jeder inhaltlichen Änderung anpassen. */
-export const PRIVACY_VERSION = "2026-11-15";
+export const PRIVACY_VERSION = "2026-11-19";
 
 /**
  * Kostenloser Tutor: Anbieter der Gratis-Stufe (Server-Secrets FREE_AI_URL/FREE_AI_KEY/FREE_AI_MODEL in der Edge Function).
